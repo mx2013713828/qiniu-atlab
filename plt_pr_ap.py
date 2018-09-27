@@ -17,7 +17,8 @@ def plot_pr_ap(pred,gt):
     #     print recall,precision
         y.append(precision)
         x.append(recall)
-
+        x.append(0)
+        y.append(y[-1]+y[-1]-y[-2])
     #计算ap
     ap = 0
     for i in range(len(x)-1):
@@ -59,4 +60,5 @@ def compute_pr(pred,gt,throuh):
                 tn = tn+1
     recall = tp/(tp+fn)
     precision = tp/(tp+fp)
+    accuracy = (tp+tn)/(tp+tn+fp+fn)
     return recall,precision
